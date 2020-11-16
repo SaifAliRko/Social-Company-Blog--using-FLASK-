@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="container">
-    <form class="form-group" method="POST">
-      {{form.hidden_tag()}}
+<div class="container" style="margin-top: 151px;">
+  <form class="form-group" method="POST">
+     {{ form.hidden_tag() }}
 
-      <div class="form-group">
-        {{form.title.label(class="form-control-label")}}
-        {{form.title(class="form-control form-control-lg")}}
-      </div>
-      <div class="form-group">
-        {{form.text.label(class="form-control-label")}}
-        {{form.text(class="form-control form-control-lg")}}
-      </div>
-      <div class="form-group">
-        {{form.submit(class="btn btn-outline-info")}}
-      </div>
+     <div class="form-group">
+     {{ form.title.label(class="form-control-label") }}
+     {{ form.title(class="form-control form-control-lg ") }}
+     </div>
+     <div class="form-group">
+     {{ form.text.label(class="form-control-label") }}
+     {{ form.text(class="form-control form-control-lg") }}
+     </div>
+     <div class="form-group">
+         {{ form.submit(class="btn btn-outline-info") }}
+     </div>
+  </form>
 
-    </form>
-  </div>
-{% endblock %}
+</div>
+
+{% endblock content %}

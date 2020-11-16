@@ -1,54 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
+
+    <title>Create your own Blogs</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" href="/css/master.css">
+    <link rel="icon" type="image/x-icon" href="static/assets/img/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="static/styles.css">
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    <ul class = 'nav'>
-      <li class = 'nav-link'>
-        <a href="{{url_for('core.index')}}">Home</a>
-      </li>
-      <li class = 'nav-link'>
-        <a href="{{url_for('core.info')}}">About</a>
-      </li>
+  <body id="page-top">
 
-      {% if current_user.is_authenticated %}
+            <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav" style=" height: 56px;">
+                <div class="container" >
+                    <a class="navbar-brand js-scroll-trigger" href="{{ url_for('core.index') }}">Home</a>
 
-
-
-      <li class = 'nav-link'>
-        <a href="{{url_for('users.logout')}}">Log Out</a>
-      </li>
-      <li class = 'nav-link'>
-        <a href="{{url_for('users.acccount')}}">Account</a>
-      </li>
-      <li class = 'nav-link'>
-        <a href="{{url_for('blog_post.create_post')}}">Create Post</a>
-      </li>
-      {% else %}
-      <li class = 'nav-link'>
-        <a href="{{url_for('users.login')}}">Log In</a>
-      </li>
-      <li class = 'nav-link'>
-        <a href="{{url_for('users.register')}}">Register</a>
-      </li>
-      {% endif %}
-    </ul>
-
-    <div class="container">
-    {% block content %}
-
-    {% endblock %}
-
-    </div>
+                    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('core.info') }}">About Us</a></li>
+                            {% if current_user.is_authenticated %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('users.logout') }}">Log Out</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('users.account') }}">Account</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('blog_posts.create_post') }}">Create Post</a></li>
+                            {% else %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('users.login') }}">Log In</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('users.register') }}">Register</a></li>
+                            {% endif %}
 
 
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
+
+<div class="container" style="margin-top: 30px;">
+  {% block content %}
+
+  {% endblock %}
+</div>
 
 
   </body>
